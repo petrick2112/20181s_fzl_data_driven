@@ -90,29 +90,6 @@ public class UC01RegistraEmprestimoDeLivro {
 		String dataEmprestimo = emprestimo.setDataEmprestimo();
 		assertTrue(dataAtual.equals(dataEmprestimo));
 	}
-	@Test
-	public void CT09QuandoForDomingoRecusarADevolucao(){
-		//cenario
-		Emprestimo umEmprestimo = new Emprestimo();
-		String data = "29/04/2018"; //domingo
-		//acao
-		boolean resultadoObtido = umEmprestimo.validaData(data);
-		//verificacao
-		assertFalse(resultadoObtido);
-	}
-	@Test
-	public void CT10QuandoForDomingoRecusarADevolucao(){
-		//cenario
-		Emprestimo umEmprestimo = new Emprestimo();
-		String data = "29/04/2018"; //domingo
-		//acao
-		try{
-		umEmprestimo.setDataDevolucao(data);
-		fail("Nao deveria aceitar uma data no domingo");
-		} catch(RuntimeException e){
-		//verificacao
-			String resultadoEsperado = "Data invalida";
-			assertTrue(resultadoEsperado.equals(e.getMessage()));
-		}
-	}
+	
+	
 }
