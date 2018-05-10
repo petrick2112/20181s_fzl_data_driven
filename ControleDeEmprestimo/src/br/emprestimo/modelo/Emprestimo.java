@@ -58,10 +58,9 @@ public class Emprestimo {
 	}
 
 	/**
-	 * valida o formato da data
+	 * valida o formato da data e se o dia do mes eh valido
 	 * 
-	 * @param data
-	 *            no formato dd/MM/yyyy
+	 * @param data no formato dd/MM/yyyy
 	 * @return true se a data estiver no formato valido e false para formato
 	 *         invalido
 	 */
@@ -76,7 +75,11 @@ public class Emprestimo {
 			return false;
 		}
 	}
-
+/**
+ * valida 
+ * @param data
+ * @return
+ */
 	public boolean validaData(String data) {
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
 		boolean isValida=false;

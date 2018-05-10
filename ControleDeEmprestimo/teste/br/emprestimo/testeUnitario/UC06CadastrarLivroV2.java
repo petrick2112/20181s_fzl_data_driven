@@ -34,8 +34,9 @@ public class UC06CadastrarLivroV2 {
 		return Arrays.asList(new Object[][] { 
 			{ "1111", "Introducao ao Teste de Software", "Delamaro", "valido" },
 			{ "", "Introducao ao Teste de Software", "Delamaro", "ISBN invalido" },
-			{ "1111", "", "Delamaro", "Titulo invalido" }, 
-			{ null, "", "Delamaro", "ISBN invalido" } 
+			{ null, "", "Delamaro", "ISBN invalido" },
+			{ "1111", "", "Delamaro", "Titulo invalido" } 
+			
 		});
 	}
 

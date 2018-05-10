@@ -9,40 +9,59 @@ import org.junit.Test;
 import br.emprestimo.modelo.Livro;
 public class UC06CadastrarLivro {
 	public static Livro livro;
-   
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		livro = ObtemLivro.comDadosValidos();
-	}
+   	
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Test(expected = RuntimeException.class)
-	public void CT01UC06CadastrarLivro_com_isbn_invalido_branco() {
-		livro.setIsbn("");
-	}
-
-	@Test(expected = RuntimeException.class)
-	public void CT02UC06CadastrarLivro_com_isbn_invalido_nulo() {
-		livro.setIsbn(null);
-	}
 	
-
 	@Test
-	public void CT03UC06CadastrarLivro_com_isbn_valido() {
-		assertEquals("121212", livro.getIsbn());
+	public void CT01ObtemLivroComDadosValidos(){
+		try{
+			//cenario
+			Livro umLivro;
+			//acao
+			umLivro = ObtemLivro.comDadosValidos();
+		}catch(RuntimeException e){
+			//verificacao
+			fail ("nao deve falhar");;
+		}
 	}
 	@Test
-	public void CT04UC01CadastrarLivro_com_isbn_invalido(){
+	public void CT02verificaOestadoDoObjeto() {
+		//cenario
+		Livro umLivro = new Livro();
+		//acao
+		umLivro.setIsbn("121212");
+		//verificacao
+		assertEquals("121212", umLivro.getIsbn());
+	}
+	@Test
+	public void CT03cadastrarLivroComISBN_em_branco(){
+		//cenario
+		String isbn="";
+		livro = new Livro();
 		try{
-			livro.setIsbn("");
+		//acao
+			livro.setIsbn(isbn);
 			fail ("deveria lançar uma exceção");
 		}catch(RuntimeException e){
+		//verificacao
 			assertEquals("ISBN invalido", e.getMessage());
 		}
 	}
+	@Test
+	public void CT04cadastrarLivroComISBN_em_nulo(){
+		//cenario
+		String isbn=null;
+		livro = new Livro();
+		try{
+			//acao
+			livro.setIsbn(isbn);
+			fail ("deveria lançar uma exceção");
+		}catch(RuntimeException e){
+			//verificacao
+			assertEquals("ISBN invalido", e.getMessage());
+		}
+	}
+	
 }
 
 
