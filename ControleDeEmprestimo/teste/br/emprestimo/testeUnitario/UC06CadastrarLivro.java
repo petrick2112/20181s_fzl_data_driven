@@ -8,9 +8,7 @@ import org.junit.Test;
 
 import br.emprestimo.modelo.Livro;
 public class UC06CadastrarLivro {
-	public static Livro livro;
-   	
-
+	
 	
 	@Test
 	public void CT01ObtemLivroComDadosValidos(){
@@ -27,17 +25,20 @@ public class UC06CadastrarLivro {
 	@Test
 	public void CT02verificaOestadoDoObjeto() {
 		//cenario
-		Livro umLivro = new Livro();
+		Livro resultadoEsperado = new Livro();
+		resultadoEsperado.setIsbn("121212");
+		resultadoEsperado.setTitulo("Engenharia de Software");
+		resultadoEsperado.setAutor("Pressman");
 		//acao
-		umLivro.setIsbn("121212");
+		Livro resultadoObtido = ObtemLivro.comDadosValidos();
 		//verificacao
-		assertEquals("121212", umLivro.getIsbn());
+		assertTrue(resultadoEsperado.equals(resultadoObtido));
 	}
 	@Test
 	public void CT03cadastrarLivroComISBN_em_branco(){
 		//cenario
 		String isbn="";
-		livro = new Livro();
+		Livro livro = new Livro();
 		try{
 		//acao
 			livro.setIsbn(isbn);
@@ -51,7 +52,7 @@ public class UC06CadastrarLivro {
 	public void CT04cadastrarLivroComISBN_em_nulo(){
 		//cenario
 		String isbn=null;
-		livro = new Livro();
+		Livro livro = new Livro();
 		try{
 			//acao
 			livro.setIsbn(isbn);
