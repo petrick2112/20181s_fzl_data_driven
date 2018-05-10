@@ -34,8 +34,10 @@ public class UC06CadastrarLivroV2 {
 		return Arrays.asList(new Object[][] { 
 			{ "1111", "Introducao ao Teste de Software", "Delamaro", "valido" },
 			{ "", "Introducao ao Teste de Software", "Delamaro", "ISBN invalido" },
-			{ null, "", "Delamaro", "ISBN invalido" },
-			{ "1111", "", "Delamaro", "Titulo invalido" } 
+			{ null, "Introducao ao Teste de Software", "Delamaro", "ISBN invalido" },
+			{ "1111", "", "Delamaro", "Titulo invalido" },
+			{ "1111", "Introducao ao Teste de Software", "", "Autor invalido" },
+			{ "1111", "Introducao ao Teste de Software", null, "Autor invalido" }
 			
 		});
 	}
@@ -49,9 +51,13 @@ public class UC06CadastrarLivroV2 {
 			umLivro.setIsbn(isbn);
 			umLivro.setTitulo(titulo);
 			umLivro.setAutor(autor);
+			assertEquals(isbn,umLivro.getIsbn());
+			assertEquals(titulo,umLivro.getTitulo());
+			assertEquals(autor,umLivro.getAutor());
 			assertTrue(resultadoEsperado.equals("valido"));
 		} catch (Exception e) {
 			assertTrue(resultadoEsperado.equals(e.getMessage()));
 		}
 	}
+	
 }
