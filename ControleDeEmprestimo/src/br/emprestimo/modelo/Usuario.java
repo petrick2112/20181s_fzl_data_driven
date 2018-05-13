@@ -1,5 +1,6 @@
 package br.emprestimo.modelo;
 
+
 public class Usuario {
 	private String ra;
 	private String nome;

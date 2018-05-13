@@ -52,6 +52,15 @@ public class UC01RegistraEmprestimoDeLivro {
 		}
 	}
 	@Test
+	public void CT03UC01FB_registrar_emprestimo_com_dados_invalidos_usuario(){
+		try{
+			servico.empresta(livro, null);
+			fail ("deveria lançar uma exceção");
+		}catch(RuntimeException e){
+			assertEquals("Dados inválidos.", e.getMessage());
+		}
+	}
+	@Test
 	public void CT04UC01FB_registrar_emprestimo_com_sucesso_validacao_da_data() {
 		//cenario
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
